@@ -8,7 +8,7 @@ var hp
 # shot
 var shot_damage = 1
 var shot_speed
-var shot_cooldown
+var shot_cooldown = .4
 var last_shot = 0
 
 # post-damage invulneability
@@ -33,7 +33,9 @@ var animation_save
 var side_save
 var mode_save
 enum side{LEFT, RIGHT}
-enum mode{IDLE, WALK, JUMP, SHOT}
+enum mode{IDLE, WALK, JUMP}
+var current_side = LEFT
+var current_mode = IDLE
 
 func _ready():
 	hp = max_hp
@@ -46,16 +48,22 @@ func _process(delta):
 	#############################################
 	if Input.is_action_pressed("ui_right") && !disable:
 		right = 1
+		current_mode = WALK
+		current_side = RIGHT
 	else:
 		right = 0
 	if Input.is_action_pressed("ui_left") && !disable:
 		left = -1
+		current_mode = WALK
+		current_side = LEFT
 	else:
 		left = 0
-	
+	if right + left == 0:
+		current_mode = IDLE
 	# jump
 	if !on_ground:
 		y_velocity += gravity_scale
+		current_mode = JUMP
 	else:
 		y_velocity = 0
 	if Input.is_action_pressed("jump") && on_ground && !disable:
@@ -73,6 +81,38 @@ func _process(delta):
 		last_shot = shot_cooldown
 	if last_shot > 0:
 		last_shot -= delta
+	
+	#############################################
+	### ANIMATION
+	#############################################
+	if current_side == LEFT:
+		move_anim.transition_node_set_current("walk", LEFT)
+		move_anim.transition_node_set_current("idle", LEFT)
+		move_anim.transition_node_set_current("jump", LEFT)
+		move_anim.transition_node_set_current("s-jump", LEFT)
+		move_anim.transition_node_set_current("s-walk", LEFT)
+		move_anim.transition_node_set_current("s-idle", LEFT)
+	else:
+		move_anim.transition_node_set_current("walk", RIGHT)
+		move_anim.transition_node_set_current("idle", RIGHT)
+		move_anim.transition_node_set_current("jump", RIGHT)
+		move_anim.transition_node_set_current("s-jump", RIGHT)
+		move_anim.transition_node_set_current("s-walk", RIGHT)
+		move_anim.transition_node_set_current("s-idle", RIGHT)
+	
+	if current_mode == IDLE:
+		move_anim.transition_node_set_current("non-shoot", IDLE)
+		move_anim.transition_node_set_current("shoot", IDLE)
+	elif current_mode == WALK:
+		move_anim.transition_node_set_current("non-shoot", WALK)
+		move_anim.transition_node_set_current("shoot", WALK)
+	else:
+		move_anim.transition_node_set_current("non-shoot", JUMP)
+		move_anim.transition_node_set_current("shoot", JUMP)
+	if last_shot > 0:
+		move_anim.blend2_node_set_amount("blend2", 1)
+	else:
+		move_anim.blend2_node_set_amount("blend2", 0)
 
 func TakeDamage(value):
 	if !invulnerable:
