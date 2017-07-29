@@ -27,7 +27,13 @@ var disable = false
 # animators
 onready var damage_anim = get_node("damage-anim")
 onready var move_anim = get_node("move-anim")
+
+# animation control
 var animation_save
+var side_save
+var mode_save
+enum side{LEFT, RIGHT}
+enum mode{IDLE, WALK, JUMP, SHOT}
 
 func _ready():
 	hp = max_hp
