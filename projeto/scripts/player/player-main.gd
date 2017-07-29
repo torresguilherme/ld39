@@ -34,8 +34,15 @@ var side_save
 var mode_save
 enum side{LEFT, RIGHT}
 enum mode{IDLE, WALK, JUMP}
-var current_side = LEFT
+var current_side = RIGHT
 var current_mode = IDLE
+
+#bullet
+var bullet = preload("res://nodes/bullet/player-bullet.tscn")
+
+#firepoints
+onready var sp_left = get_node("shootpoint").get_node("left")
+onready var sp_right = get_node("shootpoint").get_node("right")
 
 func _ready():
 	hp = max_hp
@@ -78,6 +85,10 @@ func _process(delta):
 	### SHOT
 	#############################################
 	if Input.is_action_pressed("shot") && last_shot <= 0 && !disable:
+		if current_side == LEFT:
+			Shoot(-1)
+		else:
+			Shoot(1)
 		last_shot = shot_cooldown
 	if last_shot > 0:
 		last_shot -= delta
@@ -110,9 +121,18 @@ func _process(delta):
 		move_anim.transition_node_set_current("non-shoot", JUMP)
 		move_anim.transition_node_set_current("shoot", JUMP)
 	if last_shot > 0:
-		move_anim.blend2_node_set_amount("blend2", 1)
+		move_anim.transition_node_set_current("final", 1)
 	else:
-		move_anim.blend2_node_set_amount("blend2", 0)
+		move_anim.transition_node_set_current("final", 0)
+
+func Shoot(dir):
+	var new = bullet.instance()
+	new.direction = Vector2(dir, 0)
+	if dir == -1:
+		new.set_global_pos(sp_left.get_global_pos())
+	else:
+		new.set_global_pos(sp_right.get_global_pos())
+	get_node("../").add_child(new)
 
 func TakeDamage(value):
 	if !invulnerable:

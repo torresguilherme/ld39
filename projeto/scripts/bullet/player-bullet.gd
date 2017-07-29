@@ -1,14 +1,18 @@
 extends Area2D
 
-var speed = 0
-var direction = Vector2(0, 0)
+var speed = 500
+var direction
 var damage = 1
 var max_range = 600
 var distance_covered = 0
+onready var anim = get_node("anim")
 
 func _ready():
+	if direction.x == -1:
+		anim.play("left")
+	else:
+		anim.play("right")
 	set_process(true)
-	pass
 
 func _process(delta):
 	# position update
