@@ -20,7 +20,7 @@ var left = 0
 var right = 0
 var y_velocity = 0
 var gravity_scale = 12
-var jump_force = 500
+var jump_force = 600
 var on_ground = false
 var disable = false
 

@@ -6,7 +6,7 @@ var speed = 200
 
 #movement
 var attack_max_distance = 800
-var max_range = 1200
+var max_range = 2000
 var initial_pos
 var player_pos
 
@@ -32,7 +32,7 @@ func _process(delta):
 	### STATE CHANGE
 	#############################################
 	player_pos = player.get_global_pos()
-	if initial_pos.distance_to(player_pos) <= attack_max_distance:
+	if initial_pos.distance_to(player_pos) <= max_range:
 		in_reach = true
 	else:
 		in_reach = false
