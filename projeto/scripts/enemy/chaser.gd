@@ -2,18 +2,28 @@ extends KinematicBody2D
 
 #stats
 var hp = 5
+var initialSpeed = 50
 var speed = 200
+var maxSpeed = 1000
+var accel = 20
+var slowDown = 60
 
 #movement
-var attack_max_distance = 800
+var attack_max_distance = 1200
 var max_range = 2000
 var initial_pos
 var player_pos
+var goal_pos
+
 
 #attack control
 var in_reach = false
 var attacking = false
 var walk_direction = Vector2(0, 0)
+var slowDown_direction
+var pointSet = false
+var goalReached = false
+
 
 # player
 onready var player = get_node("../").get_children()[0]
@@ -41,6 +51,10 @@ func _process(delta):
 		if !vision.values().empty():
 			if vision.values()[1].is_in_group(global.PLAYER_BODY_GROUP):
 				attacking = true
+				if !pointSet:
+					goal_pos = player_pos
+					pointSet = true
+				
 			else:
 				attacking = false
 		else:
@@ -54,9 +68,28 @@ func _process(delta):
 	### MOVEMENT
 	#############################################
 	if attacking:
-		var module = sqrt(pow(get_global_pos().x - player_pos.x, 2) + pow(get_global_pos().y - player_pos.y, 2))
-		walk_direction = Vector2((get_global_pos().x - player_pos.x)/module, (get_global_pos().y - player_pos.y)/module)
+		if !goalReached:
+			var module = sqrt(pow(get_global_pos().x - goal_pos.x, 2) + pow(get_global_pos().y - goal_pos.y, 2))
+			walk_direction = Vector2((get_global_pos().x - goal_pos.x)/module, (get_global_pos().y - goal_pos.y)/module)
+		else:
+			walk_direction = slowDown_direction
+			speed -= slowDown
+			if speed <= initialSpeed:
+				pointSet = false
+				goalReached = false
+				speed = initialSpeed
 		move(-walk_direction * speed * delta)
+		
+		if speed < maxSpeed:
+			speed += accel
+		else:
+			speed = maxSpeed
+			
+		if get_global_pos().distance_to(goal_pos) < 10:
+			goalReached = true
+			slowDown_direction = walk_direction
+			
+		
 	elif get_global_pos().distance_to(initial_pos) > 10:
 		var module = sqrt(pow(get_global_pos().x - initial_pos.x, 2) + pow(get_global_pos().y - initial_pos.y, 2))
 		walk_direction = Vector2((get_global_pos().x - initial_pos.x)/module, (get_global_pos().y - initial_pos.y)/module)
