@@ -6,7 +6,7 @@ var initialSpeed = 50
 var speed = 200
 var maxSpeed = 1000
 var accel = 20
-var slowDown = 60
+var slowDown = 50
 
 #movement
 var attack_max_distance = 1200
