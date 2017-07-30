@@ -2,17 +2,18 @@ extends KinematicBody2D
 
 #stats
 var hp = 5
-var speed = 300
+var speed = 200
 
 #movement
 var attack_max_distance = 800
-var max_range = 1000
+var max_range = 1200
 var initial_pos
 var player_pos
 
 #attack control
 var in_reach = false
 var attacking = false
+var walk_direction = Vector2(0, 0)
 
 # player
 onready var player = get_node("../").get_children()[0]
@@ -31,7 +32,7 @@ func _process(delta):
 	### STATE CHANGE
 	#############################################
 	player_pos = player.get_global_pos()
-	if get_global_pos().distance_to(player_pos) <= attack_max_distance:
+	if initial_pos.distance_to(player_pos) <= attack_max_distance:
 		in_reach = true
 	else:
 		in_reach = false
@@ -54,10 +55,22 @@ func _process(delta):
 	#############################################
 	if attacking:
 		var module = sqrt(pow(get_global_pos().x - player_pos.x, 2) + pow(get_global_pos().y - player_pos.y, 2))
-		move(-Vector2((get_global_pos().x - player_pos.x)/module, (get_global_pos().y - player_pos.y)/module) * speed * delta)
+		walk_direction = Vector2((get_global_pos().x - player_pos.x)/module, (get_global_pos().y - player_pos.y)/module)
+		move(-walk_direction * speed * delta)
 	elif get_global_pos().distance_to(initial_pos) > 10:
 		var module = sqrt(pow(get_global_pos().x - initial_pos.x, 2) + pow(get_global_pos().y - initial_pos.y, 2))
-		move(-Vector2((get_global_pos().x - initial_pos.x)/module, (get_global_pos().y - initial_pos.y)/module) * speed * delta)
+		walk_direction = Vector2((get_global_pos().x - initial_pos.x)/module, (get_global_pos().y - initial_pos.y)/module)
+		move(-walk_direction * speed * delta)
+	
+	#############################################
+	### ANIMATION
+	#############################################
+	if walk_direction.x > 0:
+		if anim.get_current_animation() != "left":
+			anim.set_current_animation("left")
+	else:
+		if anim.get_current_animation() != "right":
+			anim.set_current_animation("right")
 
 func TakeDamage(value):
 	hp -= value

@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 radius = 14.7882
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource/name = "left"
 length = 0.3
@@ -35,9 +35,8 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource/name = "right"
 length = 0.3
 loop = true
 step = 0.1
@@ -64,6 +63,7 @@ tracks/1/keys = {
 
 [node name="player-bullet" type="Area2D"]
 
+transform/scale = Vector2( 2, 2 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -91,8 +91,8 @@ _update_shape_index = 0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/left = SubResource( 3 )
-anims/right = SubResource( 2 )
+anims/left = SubResource( 2 )
+anims/right = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
