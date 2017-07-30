@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://nodes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/scene/ground.gd" type="Script" id=2]
 [ext_resource path="res://nodes/enemy/chaser.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/enemy/tengu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -56,5 +57,11 @@ trigger = false
 _update_shape_index = 0
 
 [node name="chaser" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -139.129, -2255.68 )
+
+[node name="tengu" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 105.559, -10.9166 )
 
 
