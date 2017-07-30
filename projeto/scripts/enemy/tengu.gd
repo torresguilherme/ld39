@@ -23,6 +23,7 @@ onready var player = get_node("../").get_children()[0]
 onready var anim = get_node("anim")
 onready var damage_anim = get_node("damage-anim")
 onready var firepoints = get_node("firepoints")
+onready var sounds = get_node("sounds")
 
 # bullet
 var bullet = preload("res://nodes/bullet/tengu-bullet.tscn")
@@ -83,6 +84,7 @@ func _process(delta):
 			anim.set_current_animation("left")
 
 func Shoot():
+	sounds.play("feather-shot")
 	firepoints.set_rot(get_angle_to(player_pos))
 	var new = []
 	for i in range(firepoints.get_children().size()):
@@ -94,6 +96,9 @@ func Shoot():
 func TakeDamage(value):
 	hp -= value
 	if hp > 0:
+		sounds.play("enemy-hurt")
 		damage_anim.play("damage")
 	else:
+		sounds.play("enemy-death")
+		remove_from_group(global.ENEMY_GROUP)
 		damage_anim.play("death")

@@ -22,6 +22,6 @@ func _process(delta):
 		queue_free()
 
 func _on_playerbullet_body_enter( body ):
-	if body.is_in_group(global.ENEMY_GROUP):
+	if body.is_in_group(global.ENEMY_GROUP) || body.is_in_group(global.WALL_GROUP):
 		body.TakeDamage(damage)
 		queue_free()

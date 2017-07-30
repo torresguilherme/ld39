@@ -29,9 +29,6 @@ onready var damage_anim = get_node("damage-anim")
 onready var move_anim = get_node("move-anim")
 
 # animation control
-var animation_save
-var side_save
-var mode_save
 enum side{LEFT, RIGHT}
 enum mode{IDLE, WALK, JUMP}
 var current_side = RIGHT
@@ -43,6 +40,9 @@ var bullet = preload("res://nodes/bullet/player-bullet.tscn")
 #firepoints
 onready var sp_left = get_node("shootpoint").get_node("left")
 onready var sp_right = get_node("shootpoint").get_node("right")
+
+#sounds
+onready var sounds = get_node("sounds")
 
 func _ready():
 	hp = max_hp
@@ -74,6 +74,7 @@ func _process(delta):
 	else:
 		y_velocity = 0
 	if Input.is_action_pressed("jump") && on_ground && !disable:
+		sounds.play("jump")
 		y_velocity = -jump_force
 	
 	#############################################
@@ -127,6 +128,7 @@ func _process(delta):
 
 func Shoot(dir):
 	var new = bullet.instance()
+	sounds.play("light-shot")
 	new.direction = Vector2(dir, 0)
 	if dir == -1:
 		new.set_global_pos(sp_left.get_global_pos())
@@ -137,6 +139,7 @@ func Shoot(dir):
 func TakeDamage(value):
 	if !invulnerable:
 		if hp > 1:
+			sounds.play("player-hurt")
 			hp -= value
 			damage_anim.play("damage")
 
@@ -146,6 +149,3 @@ func Heal(value):
 
 func Recharge(value):
 	pass
-
-func ReturnAnim():
-	move_anim.set_current_animation(animation_save)

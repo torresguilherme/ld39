@@ -24,13 +24,15 @@ var slowDown_direction
 var pointSet = false
 var goalReached = false
 
-
 # player
 onready var player = get_node("../").get_children()[0]
 
 # animations
 onready var anim = get_node("anim")
 onready var damage_anim = get_node("damage-anim")
+
+# sounds
+onready var sounds = get_node("sounds")
 
 func _ready():
 	initial_pos = get_global_pos()
@@ -54,6 +56,7 @@ func _process(delta):
 				if !pointSet:
 					goal_pos = player_pos
 					pointSet = true
+					sounds.play("roar")
 				
 			else:
 				attacking = false
@@ -108,6 +111,9 @@ func _process(delta):
 func TakeDamage(value):
 	hp -= value
 	if hp > 0:
+		sounds.play("enemy-hurt")
 		damage_anim.play("damage")
 	else:
+		sounds.play("enemy-death")
+		remove_from_group(global.ENEMY_GROUP)
 		damage_anim.play("death")
