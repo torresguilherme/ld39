@@ -16,7 +16,7 @@ extents = Vector2( 19.9113, 20.7155 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 28.4062, 28.4803 )
+extents = Vector2( 24.2327, 24.9168 )
 
 [sub_resource type="Animation" id=3]
 
@@ -120,6 +120,7 @@ shapes/0/transform = Matrix32( 1.00136, 0, 0, 1, 0.0559036, 0 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
+one_way_collision/direction = Vector2( 0, 1 )
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
