@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 #stats
-var hp = 40
+var hp = 25
 var initialSpeed = 50
 var speed = 200
 var maxSpeed = 1000
