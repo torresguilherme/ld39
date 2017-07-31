@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://nodes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/scene/ground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/scene/grass.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/scene/tree.tscn" type="PackedScene" id=4]
 
 [node name="level1" type="Node2D"]
 
@@ -115,6 +117,42 @@ transform/pos = Vector2( -288, 2016 )
 [node name="ground52" parent="walls" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -288, 2112 )
+
+[node name="ground89" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2784 )
+
+[node name="ground90" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2688 )
+
+[node name="ground92" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2592 )
+
+[node name="ground94" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2496 )
+
+[node name="ground238" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2400 )
+
+[node name="ground239" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2304 )
+
+[node name="ground240" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2208 )
+
+[node name="ground241" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2112 )
+
+[node name="ground242" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -384, 2016 )
 
 [node name="ground53" parent="walls" instance=ExtResource( 2 )]
 
@@ -516,6 +554,26 @@ transform/pos = Vector2( 4128, 1632 )
 
 transform/pos = Vector2( 4416, 672 )
 
+[node name="ground243" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 4416, 576 )
+
+[node name="ground244" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 4416, 480 )
+
+[node name="ground245" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 4416, 384 )
+
+[node name="ground246" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 4416, 288 )
+
+[node name="ground247" parent="walls" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 4416, 192 )
+
 [node name="ground174" parent="walls" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 4416, 768 )
@@ -702,11 +760,11 @@ transform/pos = Vector2( 3360, 1536 )
 
 [node name="ground159" parent="walls" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 3072, 1248 )
+transform/pos = Vector2( 2976, 1104 )
 
 [node name="ground160" parent="walls" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 3168, 1248 )
+transform/pos = Vector2( 3168, 1296 )
 
 [node name="ground161" parent="walls" instance=ExtResource( 2 )]
 
@@ -963,5 +1021,298 @@ transform/pos = Vector2( 192, 96 )
 [node name="ground11" parent="walls" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 192, 192 )
+
+[node name="grass" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -288, 2784 )
+
+[node name="grass1" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -192, 2784 )
+
+[node name="grass2" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -96, 2784 )
+
+[node name="grass3" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 0, 2784 )
+
+[node name="grass4" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 96, 2784 )
+
+[node name="grass5" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 192, 2784 )
+
+[node name="grass6" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 288, 2784 )
+
+[node name="grass7" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 384, 2784 )
+
+[node name="grass8" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 480, 2784 )
+
+[node name="grass9" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 576, 2784 )
+
+[node name="grass10" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 672, 2784 )
+
+[node name="grass11" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 2784 )
+
+[node name="grass12" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 864, 2784 )
+
+[node name="grass13" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 960, 2784 )
+
+[node name="grass14" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1152, 2784 )
+
+[node name="grass15" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1056, 2784 )
+
+[node name="grass16" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1248, 2784 )
+
+[node name="grass17" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1344, 2784 )
+
+[node name="grass18" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1440, 2784 )
+
+[node name="grass19" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1536, 2784 )
+
+[node name="grass20" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1632, 2784 )
+
+[node name="grass21" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1728, 2784 )
+
+[node name="grass22" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2016, 2784 )
+
+[node name="grass23" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1824, 2784 )
+
+[node name="grass24" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1920, 2784 )
+
+[node name="grass25" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2112, 2784 )
+
+[node name="grass26" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2208, 2784 )
+
+[node name="grass27" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2304, 2784 )
+
+[node name="grass28" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2400, 2784 )
+
+[node name="grass29" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2496, 2784 )
+
+[node name="grass30" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2592, 2784 )
+
+[node name="grass31" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2688, 2784 )
+
+[node name="grass32" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2784, 2784 )
+
+[node name="grass33" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2880, 2784 )
+
+[node name="grass34" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2976, 2784 )
+
+[node name="grass35" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 3264, 3024 )
+
+[node name="grass36" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 3360, 3024 )
+
+[node name="grass37" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 3456, 3024 )
+
+[node name="grass38" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 3552, 3024 )
+
+[node name="grass39" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 3984, 2928 )
+
+[node name="grass40" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4080, 2928 )
+
+[node name="grass41" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4176, 2928 )
+
+[node name="grass42" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4272, 2928 )
+
+[node name="grass43" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4368, 2832 )
+
+[node name="grass44" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4464, 2832 )
+
+[node name="grass45" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4560, 2832 )
+
+[node name="grass46" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4656, 2832 )
+
+[node name="grass47" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4896, 2832 )
+
+[node name="grass48" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 4992, 2832 )
+
+[node name="grass49" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5088, 2832 )
+
+[node name="grass50" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5184, 2832 )
+
+[node name="grass51" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5280, 2832 )
+
+[node name="grass52" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5376, 2832 )
+
+[node name="grass53" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5472, 2832 )
+
+[node name="grass54" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5568, 2832 )
+
+[node name="grass55" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5664, 2832 )
+
+[node name="grass56" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5760, 2832 )
+
+[node name="grass57" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5856, 2832 )
+
+[node name="grass58" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 5952, 2832 )
+
+[node name="grass59" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 6048, 2832 )
+
+[node name="grass60" parent="walls" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 6144, 2832 )
+
+[node name="aesth" type="Node2D" parent="."]
+
+[node name="tree" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1344, 2640 )
+
+[node name="tree1" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1008, 2640 )
+
+[node name="tree2" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 672, 2640 )
+
+[node name="tree3" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2016, 2640 )
+
+[node name="tree4" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2736, 2640 )
+
+[node name="tree6" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 4080, 2784 )
+
+[node name="tree7" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 4512, 2688 )
+
+[node name="tree5" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3456, 2880 )
+
+[node name="tree8" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 5136, 2688 )
+flip_h = true
+
+[node name="tree9" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 5568, 2688 )
+flip_h = true
+
+[node name="tree10" parent="aesth" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 6048, 2688 )
+flip_h = true
 
 

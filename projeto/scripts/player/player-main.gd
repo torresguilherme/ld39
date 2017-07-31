@@ -96,7 +96,8 @@ func _process(delta):
 	#############################################
 	### UPDATE POSITION
 	#############################################
-	move(Vector2(speed * delta * (left + right), y_velocity * delta))
+	move(Vector2(speed * delta * (left + right), 0))
+	move(Vector2(0, y_velocity * delta))
 	
 	#############################################
 	### SHOT
