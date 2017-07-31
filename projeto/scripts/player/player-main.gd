@@ -24,7 +24,7 @@ var right = 0
 var y_velocity = 0
 var gravity_scale = 12
 var jump_force = 600
-var jump_cost = 0.1
+var jump_cost = 0.05
 var on_ground = false
 var disable = false
 
