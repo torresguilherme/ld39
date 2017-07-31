@@ -10,3 +10,9 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		var ps = pause_screen.instance()
 		add_child(ps)
+
+func Next():
+	global.ChangeScene(2)
+
+func GameOver():
+	global.ChangeScene(3)

@@ -32,6 +32,7 @@ onready var gd = get_node("gd")
 # animators
 onready var damage_anim = get_node("damage-anim")
 onready var move_anim = get_node("move-anim")
+onready var scene_anim = get_node("../").get_node("scene-anim")
 onready var red_screen = get_node("red-screen")
 
 # animation control
@@ -161,6 +162,7 @@ func _process(delta):
 	else:
 		red_screen.set_opacity(0)
 	if energy <= 0:
+		scene_anim.play("game-over")
 		set_process(false)
 
 func Shoot(dir):
