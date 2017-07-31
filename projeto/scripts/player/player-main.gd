@@ -24,6 +24,7 @@ var right = 0
 var y_velocity = 0
 var gravity_scale = 12
 var jump_force = 600
+var jump_cost = 0.1
 var on_ground = false
 var disable = false
 
@@ -79,6 +80,7 @@ func _process(delta):
 	if Input.is_action_pressed("jump") && on_ground && !disable:
 		sounds.play("jump")
 		y_velocity = -jump_force
+		energy -= jump_cost
 	
 	#############################################
 	### UPDATE POSITION
@@ -140,6 +142,8 @@ func _process(delta):
 	shot_cooldown = .4 + 0.01*(max_energy - energy)
 	jump_force = 600 - 3*(max_energy - energy)
 	print("energy: ", energy, "%")
+	if energy <= 0:
+		set_process(false)
 
 func Shoot(dir):
 	var new = bullet.instance()
