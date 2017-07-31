@@ -23,6 +23,7 @@ var walk_direction = Vector2(0, 0)
 var slowDown_direction
 var pointSet = false
 var goalReached = false
+onready var rays = get_node("rays").get_children()
 
 # player
 onready var player = get_node("../").get_node("../").get_children()[0]
@@ -35,6 +36,8 @@ onready var damage_anim = get_node("damage-anim")
 onready var sounds = get_node("sounds")
 
 func _ready():
+	for i in range(4):
+		rays[i].add_exception(self)
 	initial_pos = get_global_pos()
 	add_to_group(global.ENEMY_GROUP)
 	set_process(true)
@@ -43,6 +46,13 @@ func _process(delta):
 	#############################################
 	### STATE CHANGE
 	#############################################
+	for i in range(4):
+		if rays[i].is_colliding():
+			var body = rays[i].get_collider()
+			if body:
+				if body.is_in_group(global.WALL_GROUP):
+					pointSet = false
+					goalReached = false
 	player_pos = player.get_global_pos()
 	if initial_pos.distance_to(player_pos) <= max_range:
 		in_reach = true

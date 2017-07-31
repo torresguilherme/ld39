@@ -33,6 +33,8 @@ script/script = ExtResource( 1 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
+
 [node name="Camera2D" type="Camera2D" parent="player"]
 
 anchor_mode = 1
@@ -2205,6 +2207,7 @@ flip_h = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -2234,8 +2237,6 @@ blend_times = [  ]
 autoplay = "auto"
 
 [node name="enemies" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="tengu" parent="enemies" instance=ExtResource( 7 )]
 
@@ -2290,6 +2291,8 @@ transform/pos = Vector2( 5904, 2352 )
 transform/pos = Vector2( 13392, -1488 )
 
 [node name="pickups" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="battery" parent="pickups" instance=ExtResource( 9 )]
 
