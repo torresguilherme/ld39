@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # stats
-var speed = 400
+var speed = 500
 var max_energy = 100
 var energy
 var energy_decay = 0.001
@@ -135,13 +135,12 @@ func _process(delta):
 	### ENERGY DECAY
 	#############################################
 	energy -= energy_decay
-	speed = 400 - 3*(max_energy - energy)
+	speed = 500 - 3*(max_energy - energy)
 	shot_damage = 10 - 0.08*(max_energy - energy)
 	shot_speed = 600 - 3*(max_energy - energy)
 	bullet_scale = 2 - 0.01*(max_energy - energy)
 	shot_cooldown = .4 + 0.01*(max_energy - energy)
 	jump_force = 600 - 3*(max_energy - energy)
-	print("energy: ", energy, "%")
 	if energy <= 0:
 		set_process(false)
 

@@ -101,7 +101,7 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 flip_h = true
 hframes = 4
-frame = 1
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -112,7 +112,7 @@ _update_shape_index = 0
 [node name="ground-dec" type="RayCast2D" parent="."]
 
 enabled = true
-cast_to = Vector2( 0, 25 )
+cast_to = Vector2( 0, 24 )
 layer_mask = 1
 type_mask = 3
 script/script = ExtResource( 3 )
