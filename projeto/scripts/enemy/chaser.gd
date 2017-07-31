@@ -11,7 +11,7 @@ var slowDown = 50
 #movement
 var attack_max_distance = 1000
 var max_range = 1000
-var start_range = 200
+var start_range = 450
 var stop_range = 1000
 var initial_pos
 var player_pos
