@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 #stats
 var hp = 30
-var max_range = 1200
+var max_range = 500
 var shot_cooldown = 1.5
 var last_shot = 0
 
@@ -19,7 +19,7 @@ var attacking = false
 var in_reach = false
 
 # nodes
-onready var player = get_node("../").get_children()[0]
+onready var player = get_node("../").get_node("../").get_children()[0]
 onready var anim = get_node("anim")
 onready var damage_anim = get_node("damage-anim")
 onready var firepoints = get_node("firepoints")

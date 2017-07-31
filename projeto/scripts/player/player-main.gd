@@ -10,7 +10,6 @@ var energy_decay_in_movement = 0.003
 # shot
 var shot_damage = 10
 var shot_speed = 600
-var bullet_scale = 2
 var shot_cooldown = .4
 var last_shot = 0
 var shot_cost = 0.5
@@ -41,7 +40,9 @@ var current_side = RIGHT
 var current_mode = IDLE
 
 #bullet
-var bullet = preload("res://nodes/bullet/player-bullet.tscn")
+var strong_bullet = preload("res://nodes/bullet/strong-bullet.tscn")
+var mid_bullet = preload("res://nodes/bullet/mid-bullet.tscn")
+var weak_bullet = preload("res://nodes/bullet/weak-bullet.tscn")
 
 #firepoints
 onready var sp_left = get_node("shootpoint").get_node("left")
@@ -153,19 +154,24 @@ func _process(delta):
 	speed = 500 - 3*(max_energy - energy)
 	shot_damage = 10 - 0.08*(max_energy - energy)
 	shot_speed = 600 - 3*(max_energy - energy)
-	bullet_scale = 2 - 0.01*(max_energy - energy)
 	shot_cooldown = .4 + 0.01*(max_energy - energy)
-	print(energy, "%")
 	if energy <= 0:
 		set_process(false)
 
 func Shoot(dir):
-	var new = bullet.instance()
-	sounds.play("light-shot")
+	var new
+	if energy > 60:
+		new = strong_bullet.instance()
+		sounds.play("heavy-shot")
+	elif energy <= 60 && energy > 30:
+		new = mid_bullet.instance()
+		sounds.play("light-shot")
+	else:
+		new = weak_bullet.instance()
+		sounds.play("light-shot")
 	new.direction = Vector2(dir, 0)
 	new.speed = shot_speed
 	new.damage = shot_damage
-	new.set_scale(Vector2(bullet_scale, bullet_scale))
 	if dir == -1:
 		new.set_global_pos(sp_left.get_global_pos())
 	else:

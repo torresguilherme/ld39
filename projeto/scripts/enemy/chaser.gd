@@ -9,8 +9,8 @@ var accel = 20
 var slowDown = 50
 
 #movement
-var attack_max_distance = 1200
-var max_range = 2000
+var attack_max_distance = 500
+var max_range = 500
 var initial_pos
 var player_pos
 var goal_pos
@@ -25,7 +25,7 @@ var pointSet = false
 var goalReached = false
 
 # player
-onready var player = get_node("../").get_children()[0]
+onready var player = get_node("../").get_node("../").get_children()[0]
 
 # animations
 onready var anim = get_node("anim")
