@@ -1,15 +1,18 @@
 extends KinematicBody2D
 
 # stats
-var speed = 350
-var max_hp = 5
-var hp
+var speed = 400
+var max_energy = 100
+var energy
+var energy_decay = 0.001
 
 # shot
-var shot_damage = 1
-var shot_speed
+var shot_damage = 10
+var shot_speed = 600
+var bullet_scale = 2
 var shot_cooldown = .4
 var last_shot = 0
+var shot_cost = 0.5
 
 # post-damage invulneability
 var invulnerability_time = 1
@@ -45,7 +48,7 @@ onready var sp_right = get_node("shootpoint").get_node("right")
 onready var sounds = get_node("sounds")
 
 func _ready():
-	hp = max_hp
+	energy = max_energy
 	add_to_group(global.PLAYER_BODY_GROUP)
 	set_process(true)
 
@@ -125,27 +128,44 @@ func _process(delta):
 		move_anim.transition_node_set_current("final", 1)
 	else:
 		move_anim.transition_node_set_current("final", 0)
+	
+	#############################################
+	### ENERGY DECAY
+	#############################################
+	energy -= energy_decay
+	speed = 400 - 3*(max_energy - energy)
+	shot_damage = 10 - 0.08*(max_energy - energy)
+	shot_speed = 600 - 3*(max_energy - energy)
+	bullet_scale = 2 - 0.01*(max_energy - energy)
+	shot_cooldown = .4 + 0.01*(max_energy - energy)
+	jump_force = 600 - 3*(max_energy - energy)
+	print("energy: ", energy, "%")
 
 func Shoot(dir):
 	var new = bullet.instance()
 	sounds.play("light-shot")
 	new.direction = Vector2(dir, 0)
+	new.speed = shot_speed
+	new.damage = shot_damage
+	new.set_scale(Vector2(bullet_scale, bullet_scale))
 	if dir == -1:
 		new.set_global_pos(sp_left.get_global_pos())
 	else:
 		new.set_global_pos(sp_right.get_global_pos())
 	get_node("../").add_child(new)
+	energy -= shot_cost
 
 func TakeDamage(value):
 	if !invulnerable:
-		if hp > 1:
+		energy -= value
+		if energy > 0:
 			sounds.play("player-hurt")
-			hp -= value
 			damage_anim.play("damage")
+		else:
+			pass
 
 func Heal(value):
-	hp += value
-	pass
-
-func Recharge(value):
-	pass
+	sounds.play("heal")
+	energy += value
+	if energy > max_energy:
+		energy = max_energy

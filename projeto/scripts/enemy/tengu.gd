@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 #stats
-var hp = 6
+var hp = 50
 var max_range = 1200
-var shot_cooldown = 1
+var shot_cooldown = 1.5
 var last_shot = 0
 
 # movements

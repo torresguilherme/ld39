@@ -1,10 +1,11 @@
 extends Area2D
 
-var damage = 7
+var energy = 20
 
 func _ready():
 	pass
 
-func _on_hurtbox_body_enter( body ):
+func _on_battery_body_enter( body ):
 	if body.is_in_group(global.PLAYER_BODY_GROUP):
-		body.TakeDamage(damage)
+		body.Heal(energy)
+		queue_free()

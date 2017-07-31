@@ -12,7 +12,7 @@ func _process(delta):
 	if is_colliding():
 		body = get_collider()
 		if body:
-			if body.is_in_group(global.GROUND_GROUP) || body.is_in_group(global.ENEMY_GROUP):
+			if body.is_in_group(global.GROUND_GROUP) || body.is_in_group(global.ENEMY_GROUP) || body.is_in_group(global.PLAYER_BODY_GROUP):
 				tengu.on_ground = true
 			else:
 				tengu.on_ground = false

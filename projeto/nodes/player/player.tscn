@@ -7,14 +7,14 @@
 [ext_resource path="res://animations/right-jump.tres" type="Animation" id=5]
 [ext_resource path="res://animations/right-idle.tres" type="Animation" id=6]
 [ext_resource path="res://animations/left-idle.tres" type="Animation" id=7]
-[ext_resource path="res://animations/right-shoot.tres" type="Animation" id=8]
-[ext_resource path="res://animations/left-shoot.tres" type="Animation" id=9]
-[ext_resource path="res://animations/right-jump-shoot.tres" type="Animation" id=10]
-[ext_resource path="res://animations/left-jump-shoot.tres" type="Animation" id=11]
-[ext_resource path="res://animations/right-walk.tres" type="Animation" id=12]
-[ext_resource path="res://animations/left-walk.tres" type="Animation" id=13]
-[ext_resource path="res://animations/left-walk-shoot.tres" type="Animation" id=14]
-[ext_resource path="res://animations/right-walk-shoot.tres" type="Animation" id=15]
+[ext_resource path="res://animations/left-jump-shoot.tres" type="Animation" id=8]
+[ext_resource path="res://animations/right-jump-shoot.tres" type="Animation" id=9]
+[ext_resource path="res://animations/left-shoot.tres" type="Animation" id=10]
+[ext_resource path="res://animations/left-walk.tres" type="Animation" id=11]
+[ext_resource path="res://animations/left-walk-shoot.tres" type="Animation" id=12]
+[ext_resource path="res://animations/right-walk-shoot.tres" type="Animation" id=13]
+[ext_resource path="res://animations/right-shoot.tres" type="Animation" id=14]
+[ext_resource path="res://animations/right-walk.tres" type="Animation" id=15]
 [ext_resource path="res://sfx/blink.wav" type="Sample" id=16]
 [ext_resource path="res://sfx/heal.wav" type="Sample" id=17]
 [ext_resource path="res://sfx/jump.wav" type="Sample" id=18]
@@ -24,7 +24,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 15.6413, 23.0768 )
+extents = Vector2( 13.263, 23.0768 )
 
 [sub_resource type="Animation" id=2]
 
@@ -100,7 +100,6 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 flip_h = true
 hframes = 4
-frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -137,7 +136,7 @@ base_path = NodePath("..")
 master_player = NodePath("")
 data = {
 "active": true,
-"connections": [ "anim 3", "idle", 0, "anim", "idle", 1, "final", "out", 0, "anim 5", "s-idle", 0, "anim 2", "s-idle", 1, "anim 4", "s-jump", 0, "anim 6", "s-jump", 1, "anim 9", "walk", 0, "anim 10", "walk", 1, "s-idle", "shoot", 0, "s-walk", "shoot", 1, "s-jump", "shoot", 2, "anim 11", "jump", 0, "anim 12", "jump", 1, "idle", "non-shoot", 0, "walk", "non-shoot", 1, "jump", "non-shoot", 2, "anim 8", "s-walk", 0, "anim 7", "s-walk", 1, "non-shoot", "final", 0, "shoot", "final", 1 ],
+"connections": [ "anim 3", "idle", 0, "anim", "idle", 1, "final", "out", 0, "idle", "non-shoot", 0, "walk", "non-shoot", 1, "jump", "non-shoot", 2, "anim 4", "s-jump", 0, "anim 6", "s-jump", 1, "anim 5", "s-idle", 0, "anim 2", "s-idle", 1, "anim 9", "walk", 0, "anim 10", "walk", 1, "anim 11", "jump", 0, "anim 12", "jump", 1, "non-shoot", "final", 0, "shoot", "final", 1, "anim 8", "s-walk", 0, "anim 7", "s-walk", 1, "s-idle", "shoot", 0, "s-walk", "shoot", 1, "s-jump", "shoot", 2 ],
 "master": NodePath(""),
 "nodes": [ {
 "id": "idle",
@@ -160,15 +159,23 @@ data = {
 "pos": Vector2( 1277, 294 ),
 "type": "output"
 }, {
-"blend": 0.0,
+"animation": ExtResource( 7 ),
 "filter": [  ],
-"id": "blend2",
-"pos": Vector2( 1072, 152 ),
-"type": "blend2"
+"id": "anim 3",
+"pos": Vector2( 54, 191 ),
+"type": "animation"
 }, {
-"id": "s-idle",
-"pos": Vector2( 533, 463 ),
+"animation": ExtResource( 8 ),
+"filter": [  ],
+"id": "anim 4",
+"pos": Vector2( 172, 662 ),
+"type": "animation"
+}, {
+"id": "non-shoot",
+"pos": Vector2( 856, 54 ),
 "transitions": [ {
+"auto_advance": false
+}, {
 "auto_advance": false
 }, {
 "auto_advance": false
@@ -186,6 +193,40 @@ data = {
 "type": "transition",
 "xfade": 0.0
 }, {
+"blend": 0.0,
+"filter": [  ],
+"id": "blend2",
+"pos": Vector2( 1072, 152 ),
+"type": "blend2"
+}, {
+"animation": ExtResource( 5 ),
+"filter": [  ],
+"id": "anim 12",
+"pos": Vector2( 432, 332 ),
+"type": "animation"
+}, {
+"animation": ExtResource( 9 ),
+"filter": [  ],
+"id": "anim 6",
+"pos": Vector2( 315, 704 ),
+"type": "animation"
+}, {
+"id": "s-idle",
+"pos": Vector2( 533, 463 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
+"animation": ExtResource( 10 ),
+"filter": [  ],
+"id": "anim 5",
+"pos": Vector2( 207, 320 ),
+"type": "animation"
+}, {
 "id": "walk",
 "pos": Vector2( 480, 5 ),
 "transitions": [ {
@@ -195,54 +236,6 @@ data = {
 } ],
 "type": "transition",
 "xfade": 0.0
-}, {
-"animation": ExtResource( 7 ),
-"filter": [  ],
-"id": "anim 3",
-"pos": Vector2( 54, 191 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 8 ),
-"filter": [  ],
-"id": "anim 2",
-"pos": Vector2( 89, 396 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 9 ),
-"filter": [  ],
-"id": "anim 5",
-"pos": Vector2( 207, 320 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 5 ),
-"filter": [  ],
-"id": "anim 12",
-"pos": Vector2( 432, 332 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 10 ),
-"filter": [  ],
-"id": "anim 6",
-"pos": Vector2( 315, 704 ),
-"type": "animation"
-}, {
-"id": "shoot",
-"pos": Vector2( 770, 362 ),
-"transitions": [ {
-"auto_advance": false
-}, {
-"auto_advance": false
-}, {
-"auto_advance": false
-} ],
-"type": "transition",
-"xfade": 0.0
-}, {
-"animation": ExtResource( 11 ),
-"filter": [  ],
-"id": "anim 4",
-"pos": Vector2( 172, 662 ),
-"type": "animation"
 }, {
 "id": "jump",
 "pos": Vector2( 619, 228 ),
@@ -254,11 +247,27 @@ data = {
 "type": "transition",
 "xfade": 0.0
 }, {
-"id": "non-shoot",
-"pos": Vector2( 856, 54 ),
-"transitions": [ {
-"auto_advance": false
+"animation": ExtResource( 11 ),
+"filter": [  ],
+"id": "anim 9",
+"pos": Vector2( 55, 5 ),
+"type": "animation"
 }, {
+"animation": ExtResource( 12 ),
+"filter": [  ],
+"id": "anim 8",
+"pos": Vector2( 72, 495 ),
+"type": "animation"
+}, {
+"animation": ExtResource( 13 ),
+"filter": [  ],
+"id": "anim 7",
+"pos": Vector2( 63, 596 ),
+"type": "animation"
+}, {
+"id": "final",
+"pos": Vector2( 1103, 378 ),
+"transitions": [ {
 "auto_advance": false
 }, {
 "auto_advance": false
@@ -266,16 +275,16 @@ data = {
 "type": "transition",
 "xfade": 0.0
 }, {
-"animation": ExtResource( 12 ),
+"animation": ExtResource( 14 ),
+"filter": [  ],
+"id": "anim 2",
+"pos": Vector2( 89, 396 ),
+"type": "animation"
+}, {
+"animation": ExtResource( 15 ),
 "filter": [  ],
 "id": "anim 10",
 "pos": Vector2( 52, 96 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 4 ),
-"filter": [  ],
-"id": "anim 11",
-"pos": Vector2( 430, 236 ),
 "type": "animation"
 }, {
 "id": "s-walk",
@@ -288,27 +297,17 @@ data = {
 "type": "transition",
 "xfade": 0.0
 }, {
-"animation": ExtResource( 13 ),
+"animation": ExtResource( 4 ),
 "filter": [  ],
-"id": "anim 9",
-"pos": Vector2( 55, 5 ),
+"id": "anim 11",
+"pos": Vector2( 430, 236 ),
 "type": "animation"
 }, {
-"animation": ExtResource( 14 ),
-"filter": [  ],
-"id": "anim 8",
-"pos": Vector2( 72, 495 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 15 ),
-"filter": [  ],
-"id": "anim 7",
-"pos": Vector2( 63, 596 ),
-"type": "animation"
-}, {
-"id": "final",
-"pos": Vector2( 1103, 378 ),
+"id": "shoot",
+"pos": Vector2( 770, 362 ),
 "transitions": [ {
+"auto_advance": false
+}, {
 "auto_advance": false
 }, {
 "auto_advance": false
