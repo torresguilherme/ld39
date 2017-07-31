@@ -32,6 +32,7 @@ onready var gd = get_node("gd")
 # animators
 onready var damage_anim = get_node("damage-anim")
 onready var move_anim = get_node("move-anim")
+onready var red_screen = get_node("red-screen")
 
 # animation control
 enum side{LEFT, RIGHT}
@@ -155,6 +156,10 @@ func _process(delta):
 	shot_damage = 10 - 0.08*(max_energy - energy)
 	shot_speed = 600 - 3*(max_energy - energy)
 	shot_cooldown = .4 + 0.01*(max_energy - energy)
+	if energy < 20:
+		red_screen.set_opacity(0.5 - (energy * 0.025))
+	else:
+		red_screen.set_opacity(0)
 	if energy <= 0:
 		set_process(false)
 
