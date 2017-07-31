@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scripts/scene/scene-main.gd" type="Script" id=1]
 [ext_resource path="res://nodes/player/player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://nodes/enemy/blue-oni.tscn" type="PackedScene" id=10]
 [ext_resource path="res://nodes/pickups/battery.tscn" type="PackedScene" id=11]
 [ext_resource path="res://music/LudumDare.ogg" type="AudioStream" id=12]
+[ext_resource path="res://scripts/scene/kill-area.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 
@@ -40,11 +41,19 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28848, 720 )
+
 [node name="level1" type="Node2D"]
 
 script/script = ExtResource( 1 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -96, -48 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 
@@ -2264,6 +2273,8 @@ autoplay = "auto"
 
 [node name="enemies" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="tengu" parent="enemies" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 2592, 624 )
@@ -2374,5 +2385,27 @@ stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
+
+[node name="kill-area" type="Area2D" parent="."]
+
+transform/pos = Vector2( 6288, 6912 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -768 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill-area"]
+
+transform/pos = Vector2( 0, -768 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="kill-area" to="kill-area" method="_on_killarea_body_enter"]
 
 
