@@ -9,8 +9,10 @@ var accel = 20
 var slowDown = 50
 
 #movement
-var attack_max_distance = 500
-var max_range = 500
+var attack_max_distance = 1000
+var max_range = 1000
+var start_range = 200
+var stop_range = 1000
 var initial_pos
 var player_pos
 var goal_pos
@@ -47,16 +49,18 @@ func _process(delta):
 	### STATE CHANGE
 	#############################################
 	for i in range(4):
-		if rays[i].is_colliding():
+		if rays[i].is_colliding() and pointSet and speed == maxSpeed:
 			var body = rays[i].get_collider()
 			if body:
 				if body.is_in_group(global.WALL_GROUP):
 					pointSet = false
 					goalReached = false
+					speed = initialSpeed
 	player_pos = player.get_global_pos()
-	if initial_pos.distance_to(player_pos) <= max_range:
+	
+	if initial_pos.distance_to(player_pos) <= start_range:
 		in_reach = true
-	else:
+	elif initial_pos.distance_to(player_pos) >= stop_range:
 		in_reach = false
 	if in_reach:
 		var vision = get_world_2d().get_direct_space_state().intersect_ray(get_global_pos(), player_pos, [self])

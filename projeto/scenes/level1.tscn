@@ -5,7 +5,7 @@
 [ext_resource path="res://nodes/scene/ground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/scene/grass.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/scene/tree.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sprites/Fuji.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Fuj2i.png" type="Texture" id=6]
 [ext_resource path="res://nodes/enemy/tengu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/enemy/blue-oni.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/pickups/battery.tscn" type="PackedScene" id=9]
@@ -2207,7 +2207,6 @@ flip_h = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -2222,7 +2221,7 @@ scroll/ignore_camera_zoom = true
 [node name="Sprite" type="Sprite" parent="ParallaxBackground"]
 
 transform/pos = Vector2( 512, 300 )
-transform/scale = Vector2( 4, 2.4 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 
 [node name="scene-anim" type="AnimationPlayer" parent="."]
@@ -2268,11 +2267,11 @@ transform/pos = Vector2( 7152, 2784 )
 
 [node name="blue-oni" parent="enemies" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 2928, 1392 )
+transform/pos = Vector2( 2782.69, 1445.45 )
 
 [node name="blue-oni1" parent="enemies" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 3936, 384 )
+transform/pos = Vector2( 3987.78, 405.712 )
 
 [node name="blue-oni4" parent="enemies" instance=ExtResource( 8 )]
 
