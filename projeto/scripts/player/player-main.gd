@@ -28,6 +28,7 @@ var jump_force = 600
 var jump_cost = 0.05
 var on_ground = false
 var disable = false
+onready var gd = get_node("gd")
 
 # animators
 onready var damage_anim = get_node("damage-anim")
@@ -83,6 +84,15 @@ func _process(delta):
 		y_velocity = -jump_force
 		energy -= jump_cost
 	
+	var exception = true
+	for i in range(3):
+		if gd.get_children()[i].is_colliding():
+			var body = gd.get_children()[i].get_collider()
+			if body:
+				if body.is_in_group(global.GROUND_GROUP) || body.is_in_group(global.ENEMY_GROUP):
+					exception = false
+	if exception:
+		on_ground = false
 	#############################################
 	### UPDATE POSITION
 	#############################################
@@ -144,7 +154,6 @@ func _process(delta):
 	shot_speed = 600 - 3*(max_energy - energy)
 	bullet_scale = 2 - 0.01*(max_energy - energy)
 	shot_cooldown = .4 + 0.01*(max_energy - energy)
-	jump_force = 600 - 3*(max_energy - energy)
 	print(energy, "%")
 	if energy <= 0:
 		set_process(false)

@@ -1,6 +1,6 @@
 extends RayCast2D
 
-onready var player = get_node("../")
+onready var player = get_node("../").get_node("../")
 var body
 
 func _ready():
@@ -14,9 +14,3 @@ func _process(delta):
 		if body:
 			if body.is_in_group(global.GROUND_GROUP) || body.is_in_group(global.ENEMY_GROUP):
 				player.on_ground = true
-			else:
-				player.on_ground = false
-		else:
-			player.on_ground = false
-	else:
-		player.on_ground = false
