@@ -101,7 +101,6 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 flip_h = true
 hframes = 4
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
